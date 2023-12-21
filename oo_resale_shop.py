@@ -7,7 +7,7 @@ class ResaleShop:
     # made sure to pass self into inventory
 
 
-    def buy (self, description: str, processor_type: str, hard_drive_capacity: int, memory: int, id: str, price: float, operating_system: str, year_made:int):
+    def sell (self, description: str, processor_type: str, hard_drive_capacity: int, memory: int, id: str, price: float, operating_system: str, year_made:int):
         computer = Computer(description, processor_type, hard_drive_capacity, memory, id, price, operating_system, year_made)
         if self.inventory == ():
             print ("Sorry! We are out of stock.")
@@ -18,20 +18,25 @@ class ResaleShop:
     #all of the information for each computer must be passed in
 
         
-    def sell (self, description: str, processor_type: str, hard_drive_capacity: int, memory: int, id: str, price: float, operating_system: str, year_made:int):
+    def buy (self, description: str, processor_type: str, hard_drive_capacity: int, memory: int, id: str, price: float, operating_system: str, year_made:int):
         computer = Computer(description, processor_type, hard_drive_capacity, memory, id, price, operating_system, year_made)
         self.inventory.append(computer)
     # Create a function that allows a customer to sell a computer to the store
     # all of the information for the computer is passed in
 
+    def printInventory(inventory):
+        if inventory:
+        # For each item
+            for item_id in inventory:
+            # Print its details
+                print(f'Item ID: {item_id} : {inventory[item_id]}')
 
-
-    def call_refurbish ():
+    def call_refurbish (computer):
         refurbish = input("Do you want to refurbish this computer? (yes/no)")
-        if refurbish.lower == "yes":
+        if refurbish.lower() == "yes":
             print ("Will refurbish.")
-            refurbish()
-        elif refurbish.lower == "no":
+            refurbish(computer)
+        elif refurbish.lower() == "no":
             print ("Will not refurbish.")
         else:
             print ("Please enter 'yes' or 'no'.")
